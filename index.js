@@ -27,8 +27,32 @@ app.listen(4000, () => {
     console.log(`Express is running on http://localhost:${port}`);
 })
 
-app.get('/test', async (req, res) => {
+app.get('/artists', async (req, res) => {
     const { data, error } = await supabase.from('artists').select('*');
+
+    if (error) {
+        throw new Error(error);
+    } else {
+        res.send(data);
+
+        console.log(data);
+    }
+})
+
+app.get('/songs', async (req, res) => {
+    const { data, error } = await supabase.from('songs').select('*');
+
+    if (error) {
+        throw new Error(error);
+    } else {
+        res.send(data);
+
+        console.log(data);
+    }
+})
+
+app.get('/albums', async (req, res) => {
+    const { data, error } = await supabase.from('albums').select('*');
 
     if (error) {
         throw new Error(error);
