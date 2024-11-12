@@ -40,7 +40,7 @@ app.get('/artists', async (req, res) => {
 })
 
 app.get('/songs', async (req, res) => {
-    const { data, error } = await supabase.from('songs').select('id');
+    const { data, error } = await supabase.from('songs').select('title, id');
 
     if (error) {
         throw new Error(error);
