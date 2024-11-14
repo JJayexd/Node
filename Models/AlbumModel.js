@@ -1,4 +1,4 @@
-import { supabase } from "../Config/cfgSupbase.js";
+import { supabase } from "../Config/cfgSupabase.js";
 
 export class AlbumModel {
     static getAlbums = async() => {
