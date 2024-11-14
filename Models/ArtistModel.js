@@ -5,7 +5,7 @@ export class ArtistModel {
         try {
             const { data, error } = await supabase
             .from('artists')
-            .select('name');
+            .select('id, name');
         if (error) {
             throw new Error(error.message);
         }
