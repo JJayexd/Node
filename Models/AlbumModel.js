@@ -5,7 +5,7 @@ export class AlbumModel {
         try {
             const { data, error } = await supabase
             .from('albums')
-            .select('*');
+            .select('id, title, artists ( name ), release_date');
         if (error) {
             throw new Error(error.message);
         }
