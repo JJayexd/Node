@@ -1,7 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
 
-import { supabase } from './config/config.supabase.js';
+import { supabase } from './Config/cfgSupbase.js';
+import { ArtistModel } from './Models/ArtistModel.js';
+import { SongModel } from './Models/songModel.js';
 
 const port = dotenv.PORT || 4000;
 
@@ -11,48 +13,26 @@ app.get('/', (req, res) => {
     res.send('Hello from Express');
 }); 
 
-app.get('/about', (req, res) => {
-    res.send('About');
-})
-
-app.get('/contact', (req, res) => {
-    res.send('Contact');
-})
-
-app.get('/products', (req, res) => {
-    res.send('Products');
-})
-
 app.listen(4000, () => {
     console.log(`Express is running on http://localhost:${port}`);
 })
 
-app.get('/artists', async (req, res) => {
-    const { data, error } = await supabase.from('artists').select('*');
+app.get('/songs', async (req, res) => {
+    const data = SongModel.getSongs();
 
-    if (error) {
-        throw new Error(error);
-    } else {
-        res.send(data);
-
-        console.log(data);
-    }
+    res.send(data);
+    console.log(data);
 })
 
-app.get('/songs', async (req, res) => {
-    const { data, error } = await supabase.from('songs').select('title, id');
+app.get('/artists', async (req, res) => {
+    const data = ArtistModel.getArtistName();
 
-    if (error) {
-        throw new Error(error);
-    } else {
-        res.send(data);
-
-        console.log(data);
-    }
+    res.send(data);
+    console.log(data);
 })
 
 app.get('/albums', async (req, res) => {
-    const { data, error } = await supabase.from('albums').select('*');
+    const { data, error } = await supabase.from('albums').select('id, title');
 
     if (error) {
         throw new Error(error);
