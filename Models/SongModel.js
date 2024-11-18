@@ -31,7 +31,7 @@ export class SongModel {
         try {
             const { data, error } = await supabase
             .from('songs')
-            .select('title')
+            .select('title, artists( name )')
             .eq('id', id)
             .single()
         if (error) {
