@@ -14,6 +14,8 @@ const port = dotenv.PORT || 4000;
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+
 app.get('/', (req, res) => {
     res.send('Hello from Express');
 }); 

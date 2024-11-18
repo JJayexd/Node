@@ -45,4 +45,21 @@ export class SongModel {
             console.log(error);
         }
     }
+
+    static async createSong(formdata) {
+        try {
+            const { data, error } = await supabase.from('songs')
+            .insert([
+                {
+                    title: formdata.title,
+                    content: formdata.content,
+                    lyrics: formdata.lyrics,
+                    artist_id: formdata.artist_id
+                }
+            ])
+        }
+        catch(error) {
+            console.log(error);
+        }
+    }
 }
