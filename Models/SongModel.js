@@ -23,8 +23,8 @@ import { ArtistModel } from "./ArtistModel.js";
 
 /**
  * 
- * @param {string} id 
- * @returns {Promise}
+ * @param {?} id 
+ * @returns {?}
  */
 export class SongModel {
     static getSongsById = async id => {

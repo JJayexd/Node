@@ -8,3 +8,9 @@ ArtistController.get('/artists', async (req, res) => {
     res.send(artists);
     console.log(artists);
 })
+
+ArtistController.post('/artists', async (req, res) => {
+    const data = await ArtistModel.createArtist(req.body);
+    res.send(data);
+    console.log(data);
+})

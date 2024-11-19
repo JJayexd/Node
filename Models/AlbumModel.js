@@ -17,4 +17,21 @@ export class AlbumModel {
             console.log(error);
         }
     }
+
+    static async createAlbum (formdata) {
+        try {
+            const { data, error } = await supabase.from('albums')
+            .insert([
+                {
+                    title: formdata.title,
+                    artist_id: formdata.artist_id,
+                    description: formdata.description
+                }
+            ])
+        }
+        // Har prøvet noget nyt her for at teste om det giver samme resultat.
+        catch (error) {
+            throw new Error(error.message);
+        }
+    }
 }

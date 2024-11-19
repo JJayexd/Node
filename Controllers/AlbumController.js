@@ -8,3 +8,9 @@ AlbumController.get('/albums', async (req, res) => {
     res.send(albums);
     console.log(albums);
 })
+
+AlbumController.post('/albums', async (req, res) => {
+    const data = await AlbumModel.createAlbum(req.body);
+    res.send(data);
+    console.log(data);
+})

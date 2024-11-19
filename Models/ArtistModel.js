@@ -17,4 +17,19 @@ export class ArtistModel {
             console.log(error);
         }
     }
+
+    static async createArtist(formdata) {
+        try {
+            const { data, error } = await supabase.from('artists')
+            .insert([
+                {
+                    name: formdata.name,
+                    description: formdata.description
+                }
+            ])
+        }
+        catch(error) {
+            console.log(error);
+        }
+    }
 }
