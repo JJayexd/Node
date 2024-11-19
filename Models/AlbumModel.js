@@ -29,7 +29,6 @@ export class AlbumModel {
                 }
             ])
         }
-        // Har prøvet noget nyt her for at teste om det giver samme resultat.
         catch (error) {
             throw new Error(error.message);
         }
