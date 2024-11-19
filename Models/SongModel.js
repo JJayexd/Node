@@ -41,10 +41,10 @@ export class SongModel {
             return data;
         }
     }
-        catch(error) {
-            console.log(error);
-        }
+    catch(error) {
+        console.log(error);
     }
+}
 
     static async createSong(formdata) {
         try {
@@ -57,6 +57,12 @@ export class SongModel {
                     artist_id: formdata.artist_id
                 }
             ])
+            if (error) {
+                throw new Error(error.message);
+            }
+            else {
+                return data;
+            }
         }
         catch(error) {
             console.log(error);
