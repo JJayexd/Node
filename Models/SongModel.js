@@ -79,6 +79,8 @@ export class SongModel {
                 artist_id: formdata.artist_id
             })
             .eq ('id', formdata.id)
+            .select()
+            .single()
             if (error) {
                 throw new Error(error.message);
             }

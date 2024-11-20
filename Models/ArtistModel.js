@@ -32,4 +32,26 @@ export class ArtistModel {
             console.log(error);
         }
     }
+
+    static async updateArtist(formdata) {
+        try {
+            const { data, error } = await supabase.from('artists')
+            .update({
+                name: formdata.name,
+                description: formdata.description
+            })
+            .eq ('id', formdata.id)
+            .select()
+            .single()
+            if (error) {
+                throw new Error (error.message);
+            }
+            else {
+                return data;
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
 }

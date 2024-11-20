@@ -33,4 +33,21 @@ export class AlbumModel {
             throw new Error(error.message);
         }
     }
+
+    static async updateAlbum (formdata) {
+        try {
+            const { data, error } = await supabase.from('albums')
+            .update({
+                title: formdata.title,
+                artist_id: formdata.artist_id,
+                description: formdata.description
+            })
+            .eq ('id', formdata.id)
+            .select()
+            .single()
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
 }

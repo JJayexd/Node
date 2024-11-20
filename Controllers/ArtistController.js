@@ -14,3 +14,9 @@ ArtistController.post('/artists', async (req, res) => {
     res.send(data);
     console.log(data);
 })
+
+ArtistController.put('/artists', async (req, res) => {
+    const data = await ArtistModel.updateArtist(req.body);
+    res.send(data);
+    console.log(data);
+})
